@@ -17,7 +17,7 @@
   "devDependencies": {},
   "author": "Victor Huang",
   "license": "ISC",
-  "description": "experimental site"
+  "description": "experimental site",
   "engines": {
 	"node": "8.11.3"
   }
