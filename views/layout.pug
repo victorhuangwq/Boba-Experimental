@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, iniital-scale=1')
+    link(rel="stylesheet", href="https://unpkg.com/picnic")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title= title
+  div(style='overflow:hidden; height:50px;')
+  nav
+    a(class='brand')
+      img(class='logo' src='/images/boba.png')
+      span Boba
+    input(id='bmenub' type='checkbox' class='show')
+    label(for='bmenub' class='burger pseudo button') menu
+
+    div(class='menu')
+      a(href='#' class='pseudo button') Blog
+      a(href='#' class='pseudo button') Experiment
+  body
+    block content
