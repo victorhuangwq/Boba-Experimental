@@ -3,8 +3,9 @@ h1,h2,h3, h4, p{
   margin:0;
 }
 
-div{
+div.pad{
   padding-left:60px;
   padding-right:60px;
   overflow: hidden;
 }
+
