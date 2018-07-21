@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  script(src='/javascripts/login.js')
+  div(class='flex four')
+    div
+    div(class='full half-1300 pad')
+      article(class='card', id='err_box')
+          span(class='label warning', id='err')= message
+      form(action="/login", method="post")
+        div
+          label Username
+          input(type="text", name="username")
+        div
+          label Password:
+          input(type="password", name="password")
+        div
+          input(type='submit' value='Login',id='login')
+          button(class='success', type='button', id='register') Register
+    div

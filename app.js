@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 // Database
 const { Client } = require('pg');
@@ -28,6 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.cookieParser());
+app.use(flash());
+
+// creating app session
+
+app.use(session({secret:"abc"}));
 
 // Make DB accessible
 app.use(function(req,res,next){
