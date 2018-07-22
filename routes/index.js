@@ -4,6 +4,8 @@ var router = express.Router();
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt');
+var uuidV1 = require('uuid/v1');
 
 /* Passport*/
 router.use(bodyParser.urlencoded({extended:true}));
@@ -28,15 +30,18 @@ passport.use(new LocalStrategy({
           return done(null,false, {message:'User does not exist!'})
         }
 
-        //If password incorrect
-        if(user.rows[0].password != password){
-          console.log("password wrong");
-          return done(null,false,{message:"Wrong Password!"});
-        }
-        else{
-          console.log("success");
-          return done(null,user.rows[0]);
-        }
+        bcrypt.compare(password, user.rows[0].password, function(err, res) {
+          if(res) {
+           // Passwords match
+           console.log("success");
+           return done(null,user.rows[0]);
+          } else {
+           // Passwords don't match
+           console.log("password wrong");
+           return done(null,false,{message:"Wrong Password!"});
+          } 
+        });
+
       });
   }
 ));
@@ -94,6 +99,24 @@ router.get('/logout',function(req,res){
 // Get Register Page
 router.get('/register',function(req,res,next){
   res.render('register');
+});
+
+router.post('/register', function(req, res) {
+    var db = req.db;
+
+    //Checking password = retry, and whether user exists should be done in frontend javascript
+    console.log(req.body.password);
+    // Hash password
+    let hash = bcrypt.hashSync(req.body.password,5);
+
+    // Registering User
+    db.query("INSERT INTO users(id,username,password,email) values($1,$2,$3,$4)",
+        [uuidV1(),req.body.username,hash,req.body.email],function(err){
+          if(err) throw err;
+
+          req.flash('info','Registering Successful');
+          res.redirect('/login');
+        });
 });
 
 /* Edit Page*/
