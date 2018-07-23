@@ -21,3 +21,8 @@ div.pad{
 div.no-pad{
   padding:0px;
 }
+
+nav {
+  color: #C5ECFB;
+  background-color:#C5ECFB;
+}

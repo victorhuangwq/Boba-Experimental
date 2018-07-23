@@ -6,7 +6,8 @@ block content
     div
     div(class='full half-1300 pad')
       article(class='card', id='err_box')
-          span(class='label warning', id='err')= message
+          span(class='label warning', id='err')
+            h3=message
       form(action="/login", method="post")
         div
           label Username
@@ -16,5 +17,5 @@ block content
           input(type="password", name="password")
         div
           input(type='submit' value='Login',id='login')
-          button(class='success', type='button', id='register' disabled='true') Register
+          button(class='success', type='button', id='register' ) Register
     div
