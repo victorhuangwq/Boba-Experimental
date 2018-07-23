@@ -19,6 +19,7 @@
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "pug": "^2.0.3",
+    "trumbowyg": "^2.10.0",
     "uuid": "^3.3.2"
   },
   "main": "app.js",
