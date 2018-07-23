@@ -11,6 +11,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "easyeditor": "^1.1.0",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
@@ -19,7 +20,7 @@
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "pug": "^2.0.3",
-    "trumbowyg": "^2.10.0",
+    "tui-editor": "^1.2.6",
     "uuid": "^3.3.2"
   },
   "main": "app.js",

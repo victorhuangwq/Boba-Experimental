@@ -1,13 +1,73 @@
 extends layout
 
 block content
-  script(src='scripts/trumbowyg.min.js')
-  link(rel='stylesheet',href="scripts/ui/trumbowyg.min.css")
+
+  script(src='easyeditor/jquery.easyeditor.js')
+  link(rel='stylesheet',href='easyeditor/easyeditor.css')
+  
   script(src='/javascripts/edit.js')
   div(class='flex four')
     div
     div(class='full half-1300 pad')
-      h1 Edit Page
-      button(class='success', type='button', id='logout') Logout
-      #editSection
+      div(class='tabs three')
+        input(type='radio' name='tabgroupB' checked)#tab-1
+        label(class='pseudo button toggle' for='tab-1') Add
+        input(type='radio' name='tabgroupB' )#tab-2
+        label(class='pseudo button toggle' for='tab-2') Edit
+        input(type='radio' name='tabgroupB' )#tab-3
+        label(class='pseudo button toggle' for='tab-3') Test
+        div(class='row')
+          div
+            article(class='card', style='margin:1px, padding:20px')
+              div(class='pad')
+                h2 Add Post
+                hr
+                form(action="/addpost", method="post")
+                label Title
+                input(type="text", name="title")
+
+                label Image Link
+                input(type="text", name="imagelink")
+                
+                label Description
+                textarea#description(name="description", rows="10", placeholder='Enter review')
+
+                div(class='flex full four-500' style='text-align:center')
+                  div
+                    label Milk:
+                    select
+                      option 1
+                      option 2
+                      option 3
+                      option 4
+                      option 5
+                  div
+                    label Tea:
+                    select
+                      option 1
+                      option 2
+                      option 3
+                      option 4
+                      option 5
+                  div
+                    label Aftertaste:
+                    select
+                      option 1
+                      option 2
+                      option 3
+                      option 4
+                      option 5
+                  div
+                    label Overall:
+                    select
+                      option 1
+                      option 2
+                      option 3
+                      option 4
+                      option 5
+                input(disabled='true' type='submit' value='Submit',id='post_submit',style='width:100%')
+          div
+            article(class ='card' style='margin:1px')
+              h2 Edit Post
+          div
     div

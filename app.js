@@ -31,7 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(__dirname + '/node_modules/trumbowyg/dist/'))
-//app.use(express.cookieParser());
+app.use('/easyeditor', express.static(__dirname + '/node_modules/easyeditor/src/'))
+
 app.use(flash());
 
 // creating app session
