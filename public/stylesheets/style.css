@@ -12,3 +12,12 @@ div.pad{
 #login{
   margin-right:10px;
 }
+
+
+#err{
+  margin:0px;
+}
+
+div.no-pad{
+  padding:0px;
+}

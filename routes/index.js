@@ -104,7 +104,7 @@ router.get('/register',function(req,res,next){
 router.post('/register', function(req, res) {
     var db = req.db;
 
-    //Checking password = retry, and whether user exists should be done in frontend javascript
+    //Checking password = retry, and whether user exists should also be done in frontend javascript
     console.log(req.body.password);
     // Hash password
     let hash = bcrypt.hashSync(req.body.password,5);

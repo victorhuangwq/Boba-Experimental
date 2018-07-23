@@ -3,25 +3,27 @@ extends layout
 block content
   script(src='/javascripts/login.js')
   div(class='flex four')
-    div
+    div(class='no-pad')
     div(class='full half-1300 pad')
-      article(class='card', id='err_box')
-          span(class='label warning', id='err')= message
-      h2 Boba account Registration
+      h2 Boba Account Registration
       hr
-      form(action="/register", method="post")
+      form(action="/register", method="post",id='reg_form')
         div
           label Username
-          input(type="text", name="username")
+          input(type="text", name="username", id='reg_user')
         div
           label Email
-          input(type='email',name='email')
+          input(type='email',name='email',id='reg_email')
         div
           label Password:
-          input(type="password", name="password")
+          input(type="password", name="password",id='reg_pass')
         div
           label Re-try Password:
-          input(type="password",name="retrypass")
+          input(type="password",name="retrypass",id='reg_retry')
+        br
+        article(class='card', id='err_box')
+          span(class='label warning', id='err')= message
         div
-          input(type='submit' value='Submit')
+          input(disabled='true' type='submit' value='Submit',id='reg_submit')
+
     div
