@@ -22,50 +22,50 @@ block content
               div(class='pad')
                 h2 Add Post
                 hr
-                form(action="/addpost", method="post")
-                label Title
-                input(type="text", name="title")
+                form(action="reviews/addpost", method="post",id='add_form')
+                  label Title
+                  input(type="text", name="title")#t
 
-                label Image Link
-                input(type="text", name="imagelink")
-                
-                label Description
-                textarea#description(name="description", rows="10", placeholder='Enter review')
+                  label Image Link
+                  input(type="text", name="imagelink")#i
+                  
+                  label Description
+                  textarea#description(name="description", rows="10", placeholder='Enter review')
 
-                div(class='flex full four-500' style='text-align:center')
-                  div
-                    label Milk:
-                    select
-                      option 1
-                      option 2
-                      option 3
-                      option 4
-                      option 5
-                  div
-                    label Tea:
-                    select
-                      option 1
-                      option 2
-                      option 3
-                      option 4
-                      option 5
-                  div
-                    label Aftertaste:
-                    select
-                      option 1
-                      option 2
-                      option 3
-                      option 4
-                      option 5
-                  div
-                    label Overall:
-                    select
-                      option 1
-                      option 2
-                      option 3
-                      option 4
-                      option 5
-                input(disabled='true' type='submit' value='Submit',id='post_submit',style='width:100%')
+                  div(class='flex full four-500' style='text-align:center')
+                    div
+                      label Milk:
+                      select(name='ms')
+                        option 1
+                        option 2
+                        option 3
+                        option 4
+                        option 5
+                    div
+                      label Tea:
+                      select(name='ts')
+                        option 1
+                        option 2
+                        option 3
+                        option 4
+                        option 5
+                    div
+                      label Aftertaste:
+                      select(name='as')
+                        option 1
+                        option 2
+                        option 3
+                        option 4
+                        option 5
+                    div
+                      label Overall:
+                      select(name='os')
+                        option 1
+                        option 2
+                        option 3
+                        option 4
+                        option 5
+                  input(disabled='true',type='submit' value='Submit',id='post_submit',style='width:100%')
           div
             article(class ='card' style='margin:1px')
               h2 Edit Post

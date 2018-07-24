@@ -12,4 +12,9 @@ router.get('/userlist', function(req, res, next) {
 
 });
 
+router.post('/addpost', function(req, res) {
+    console.log(req.user.id);
+    console.log(req.user.username);
+});
+
 module.exports = router;

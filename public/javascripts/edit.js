@@ -7,7 +7,6 @@ $(document).ready(function() {
         window.location.replace('/logout');
     });
 
-    //new EasyEditor('#editSection');
 
     $('#description').easyEditor({
         css:({minHeight:'200px',maxHeight:'300px'
@@ -16,5 +15,16 @@ $(document).ready(function() {
       });
       
     $('.menu').append('<a href="/logout" class="warning"> Logout </a>');
+
+    $('#add_form').focusout(function(e){
+        checkComplete();
+    });
 });
 
+
+function checkComplete(){
+    console.log($('#description').text());
+    if($('#i').val()!='' && $('#t').val()!='' && $('#description').val()!=''){
+        $('#post_submit').prop('disabled',false);
+    }
+}

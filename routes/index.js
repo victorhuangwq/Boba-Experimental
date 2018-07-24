@@ -18,7 +18,7 @@ passport.use(new LocalStrategy({
   function(req,username, password, done) {
       var db = req.db;
       console.log('select * from users where username="'+ username+'"');
-      db.query("select username,password from users where username=$1",[username],(err,user) => {
+      db.query("select username,password,id from users where username=$1",[username],(err,user) => {
         
         if(err) throw err;
 
@@ -79,7 +79,7 @@ router.post('/login',
   function(req, res) {
     req.flash('info','Log in Successful');
     res.redirect('/edit');
-  });
+});
 
 router.get('/logout',function(req,res){
   req.logout();
