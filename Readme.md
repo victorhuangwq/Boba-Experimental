@@ -8,9 +8,8 @@ Things that are done
 * Retrieving from Postgres Server
 * Passport Login, with Express-sessions. (Password Encrypted)
 * Functional Register Page (front end error checking)
-* Edit Page with add blog html (no server side adding)
+* Edit Page with add blog html (Able to Add Post & Edit Post)
 
 To-Do
-- Complete Edit Page 
 - Beautify the Blog
 

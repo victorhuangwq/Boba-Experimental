@@ -14,6 +14,16 @@ div ul{
   font-size:11px;
 }
 
+/* multiline ellipse */
+.dots {
+  height: 4.5em;
+  overflow:hidden;
+  display: block; 
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; 
+}
 
 @media screen and (min-width: 767px) {
 
@@ -34,6 +44,11 @@ div ul{
   
   div.no-pad{
     padding:0px;
+  }
+
+  #userposts>div{
+    padding-left:10px;
+    padding-right:10px;
   }
   
 

@@ -13,12 +13,12 @@ block content
         input(type='radio' name='tabgroupB' checked)#tab-1
         label(class='pseudo button toggle' for='tab-1') Add
         input(type='radio' name='tabgroupB' )#tab-2
-        label(class='pseudo button toggle' for='tab-2') Edit
+        label(class='pseudo button toggle' for='tab-2') View 
         input(type='radio' name='tabgroupB' )#tab-3
-        label(class='pseudo button toggle' for='tab-3') Test
+        label(class='pseudo button toggle' for='tab-3' style='visibility:hidden' ) Edit
         div(class='row')
           div
-            article(class='card', style='margin:1px, padding:20px')
+            article(class='card', style='margin:1px, padding:20px')#postcard
               div(class='pad')
                 h2 Add Post
                 hr
@@ -69,5 +69,6 @@ block content
           div
             article(class ='card' style='margin:1px')
               h2 Edit Post
-          div
+              #userposts
+          #editpost
     div

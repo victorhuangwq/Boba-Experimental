@@ -27,8 +27,8 @@ function populateReviewCards(){
             reviewCards += '<div><h4>Milk: '+ this.milk_stars +'/5</h4></div>';
             reviewCards += '<div><h4>Tea: '+ this.tea_stars +'/5</h4></div>';
             reviewCards += '<div><h4>Aftertaste: '+ this.aftertaste_stars +'/5</h4></div>';
-            reviewCards += '<div><h4>Overall: '+ this.overall_stars +'/5</h4></div>';
-            reviewCards += '<p>'+this.date+'</p></footer>';
+            reviewCards += '<div><h4>Overall: '+ this.overall_stars +'/5</h4></div></div>';
+            reviewCards += '<p>Posted on: '+this.date+' | Last Edited: '+this.datem+'</p></footer>';
             reviewCards += '</article>';
         
         });

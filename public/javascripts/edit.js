@@ -1,5 +1,6 @@
 // DOM Ready
 
+var localreviews = {};
 
 $(document).ready(function() {
 
@@ -19,12 +20,112 @@ $(document).ready(function() {
     $('#add_form').focusout(function(e){
         checkComplete();
     });
+
+    $('input[type="radio"]').click(function(e){
+        if(!$('#tab-3').prop('checked')){
+            $("label[for='tab-3']").css('visibility','hidden');
+        }
+    });
+
+    populatePosts();
 });
 
 
 function checkComplete(){
-    console.log($('#description').text());
-    if($('#i').val()!='' && $('#t').val()!='' && $('#description').val()!=''){
+
+    if($('#add_form input[name="title"]').val()!='' && $('#add_form input[name="imagelink"]').val()!='' && $('#description').val()!=''){
         $('#post_submit').prop('disabled',false);
     }
+    else{
+        $('#post_submit').prop('disabled',true);
+    }
+
+    if($('#edit_form input[name="title"]').val()!='' && $('#edit_form input[name="imagelink"]').val()!='' && $('#d').val()!=''){
+        $('#edit_submit').prop('disabled',false);
+    }
+    else{
+        $('#edit_submit').prop('disabled',true);
+    }
 }
+
+function populatePosts(){
+
+    var reviewCards = '';
+
+    $.getJSON('reviews/userreviews',function(data){
+
+
+        $.each(data,function(){
+
+            reviewCards += '<div class="flex five">';
+            reviewCards += "<div>"
+            reviewCards += "<img src='" + this.image + "'>";
+            reviewCards += "</div>";
+            reviewCards += "<div class='four-fifth'>"          
+            reviewCards += '<h3>' + this.title + "<hr></h3>";
+            reviewCards += '<p><div class="dots">' + this.review + "</div></p>";
+            reviewCards += '<p>'+this.date+''
+            reviewCards += '<button onclick="editPost(this.value)" value="' + this.num + '" style="float:right"> Edit </button></p>'
+            reviewCards += '</div></div>';
+        
+            localreviews[this.num]=this;
+        });
+
+        $('#userposts').html(reviewCards);
+    });
+}
+
+function editPost(value){
+    $('#tab-3').prop('checked',true);
+    $("label[for='tab-3']").css('visibility','visible');
+    
+    var form = $('#postcard').clone();
+
+    form.prop('id','#editcard');
+
+    var review = localreviews[value];
+
+    console.log(review);
+
+    $('h2',form).text('Edit Post');
+    $('form',form).prop('action','reviews/editpost');
+    $('form',form).prop('id','edit_form');
+    $('#t',form).val(review.title);
+    $('#i',form).val(review.image);
+
+    $('#description',form).prop("id","d");
+    $('.easyeditor-wrapper',form).remove();
+    $('#d',form).text(review.review);
+
+    $('select[name="ms"]',form).val(review.milk_stars);
+    $('select[name="ts"]',form).val(review.tea_stars);
+    $('select[name="as"]',form).val(review.aftertaste_stars);
+    $('select[name="os"]',form).val(review.overall_stars);
+
+    $('#post_submit',form).prop('id','edit_submit');
+
+
+    var input_num = $("<input>")
+                .attr("type", "hidden")
+                .attr('name',"num")
+                .val(value);
+
+    $('#edit_form',form).append($(input_num));
+
+    $('#editpost').html(form); 
+
+    $('#d').easyEditor({
+        css:({minHeight:'200px',maxHeight:'300px'
+        }),
+        buttons: ['bold', 'italic', 'link', 'h2', 'h3', 'h4', 'quote', 'code', 'list', 'x'],
+      });
+
+
+    checkComplete();
+
+    $('#edit_form').focusout(function(e){
+        checkComplete();
+    });
+
+}
+
