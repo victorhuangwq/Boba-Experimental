@@ -14,18 +14,36 @@ div ul{
   font-size:11px;
 }
 
-/* multiline ellipse */
-.dots {
-  height: 4.5em;
-  overflow:hidden;
-  display: block; 
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis; 
+
+
+@media only screen and (max-width:600px) {
+  #userposts > div{
+    font-size:11px;
+  }
+
+  /* multiline ellipse */
+  .dots {
+    height: 3em;
+    overflow:hidden;
+    display: block; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; 
+  }
 }
 
-@media screen and (min-width: 767px) {
+@media all and (min-width: 600px) {
+    /* multiline ellipse */
+  .dots {
+    height: 4.5em;
+    overflow:hidden;
+    display: block; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; 
+  }
 
   div.pad{
     padding-left:60px;
