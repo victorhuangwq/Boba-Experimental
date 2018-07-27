@@ -27,9 +27,49 @@ $(document).ready(function() {
         }
     });
 
+    $(document).ajaxStart(function(){
+        $(".wait").css("display", "block");
+    });
+    
+    $(document).ajaxComplete(function(){
+        $(".wait").css("display", "block");
+    });
+
     populatePosts();
 });
 
+
+function upload(){
+
+    var r = confirm('File will be uploaded onto Imgur');
+
+    if(r == true){
+        var filesSelected = document.getElementById("imagefile").files;
+
+        if (filesSelected.length > 0)
+        {
+            var formData = new FormData();
+            formData.append('image',filesSelected[0]);
+
+            var settings = {
+                url: 'https://api.imgur.com/3/image',
+                type: 'POST',
+                headers: { "Authorization": "Client-ID 0a4bc22df468258" },
+                processData: false,
+                contentType: false
+            };
+
+            settings.data = formData;
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                $('input[name="imagelink"]').val(response.data.link);
+            });
+            
+        }
+    }
+}
+    
 
 function checkComplete(){
 

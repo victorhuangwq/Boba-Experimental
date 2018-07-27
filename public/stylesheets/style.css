@@ -8,12 +8,11 @@ nav {
   background-color:#C5ECFB;
 }
 
-div ul{
+div ul {
   padding:0px;
   margin:0px;
   font-size:11px;
 }
-
 
 
 @media only screen and (max-width:600px) {

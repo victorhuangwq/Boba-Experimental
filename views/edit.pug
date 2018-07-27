@@ -26,9 +26,13 @@ block content
                   label Title
                   input(type="text", name="title")#t
 
-                  label Image Link
-                  input(type="text", name="imagelink")#i
-                  input(title="Drop image or click me" type="file" name= "image")
+                  label Image
+                  div(class="flex four")
+                    div(class='three-fourth' style='height:50px')
+                        input(title="Drop image or click me" type="file" name= "image")#imagefile
+                    div
+                        button(type='button' class='success',onclick='upload()') Upload
+                  input(type="text", name="imagelink" placeholder='Alternatively Paste Image Link Directly')#i
                   label Description
                   textarea#description(name="description", rows="10", placeholder='Enter review')
 
