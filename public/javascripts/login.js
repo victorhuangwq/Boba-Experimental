@@ -49,12 +49,17 @@ function checkUser(){
 
     var user = $('#reg_user').val();
     if(user != ''){
+        console.log('here');
+
         $.getJSON('users/userlist',function(data){
             var exist = false;
+            console.log('here2');
+
             $.each(data,function(){
                 if(this.username == user ){
                     exist = true;
                 }
+                console.log('here3');
             });
             
             if(exist){
@@ -62,13 +67,14 @@ function checkUser(){
                 e_messages[0] = 'Username Already Exist';
             }
             else{
-                unique_user = true
+                unique_user = true;
                 e_messages[0] = '';
             }
             updateForm();
         });
     }
     else {
+        console.log('b');
         unique_user = false;
         e_messages[0] = '';
         updateForm();
@@ -139,6 +145,10 @@ function updateForm(){
     
     $('#err').html(str);
     hideErrBox();
+    console.log(unique_user);
+    console.log(valid_email);
+    console.log(valid_pass);
+    
 
     if(unique_user&&valid_email&&valid_pass){
         $('#reg_submit').prop('disabled',false);
