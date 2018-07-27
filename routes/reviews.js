@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var moment = require('moment');
+var imgur = require('imgur-node-api');
+imgur.setClientID('0a4bc22df468258');
+var fileUpload = require('express-fileupload');
+router.use(fileUpload());
 
 /* GET review listing. */
 router.get('/reviewlist', function(req, res, next) {
@@ -13,6 +17,16 @@ router.get('/reviewlist', function(req, res, next) {
 });
 
 router.post('/addpost', function(req, res) {
+  console.log(req.files.image.name);
+  req.files.image.mv('/images/temp.jpg',function(err){
+    if(err)
+      return res.status(500).send(err);
+  });
+  /** 
+  imgur.upload(req.files.image.data,function(err,res){
+    console.log(res.data.link);
+  });
+ 
   if(req.isUnauthenticated()) res.redirect('/login')
   else{
     var db= req.db;
@@ -27,6 +41,7 @@ router.post('/addpost', function(req, res) {
       res.redirect('/');
     });
   }
+  **/
 });
 
 router.post('/editpost', function(req, res) {

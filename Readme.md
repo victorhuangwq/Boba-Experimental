@@ -9,6 +9,7 @@ Things that are done
 * Passport Login, with Express-sessions. (Password Encrypted)
 * Functional Register Page (front end error checking)
 * Edit Page with add blog html (Able to Add Post & Edit Post)
+* Uploaded and working on Heroku
 
 To-Do
 - Beautify the Blog

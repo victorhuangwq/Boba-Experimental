@@ -22,13 +22,13 @@ block content
               div(class='pad')
                 h2 Add Post
                 hr
-                form(action="reviews/addpost", method="post",id='add_form')
+                form(action="reviews/addpost", method="post",id='add_form' encType="multipart/form-data")
                   label Title
                   input(type="text", name="title")#t
 
                   label Image Link
                   input(type="text", name="imagelink")#i
-                  
+                  input(title="Drop image or click me" type="file" name= "image")
                   label Description
                   textarea#description(name="description", rows="10", placeholder='Enter review')
 
