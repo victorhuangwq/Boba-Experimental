@@ -14,6 +14,13 @@ div ul {
   font-size:11px;
 }
 
+.wait {
+  max-height:50px;
+  background-size: 45px 45px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow:hidden;
+}
 
 @media only screen and (max-width:600px) {
   #userposts > div{

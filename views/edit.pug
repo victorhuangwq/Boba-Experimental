@@ -10,11 +10,11 @@ block content
     div
     div(class='full half-1300 pad')
       div(class='tabs three')
-        input(type='radio' name='tabgroupB' checked)#tab-1
+        input(type='radio' name='tabgroupB' value='1' checked)#tab-1
         label(class='pseudo button toggle' for='tab-1') Add
-        input(type='radio' name='tabgroupB' )#tab-2
+        input(type='radio' name='tabgroupB' value='2' )#tab-2
         label(class='pseudo button toggle' for='tab-2') View 
-        input(type='radio' name='tabgroupB' )#tab-3
+        input(type='radio' name='tabgroupB' value='3' )#tab-3
         label(class='pseudo button toggle' for='tab-3' style='visibility:hidden' ) Edit
         div(class='row')
           div
@@ -22,16 +22,17 @@ block content
               div(class='pad')
                 h2 Add Post
                 hr
-                form(action="reviews/addpost", method="post",id='add_form' encType="multipart/form-data")
+                form(action="reviews/addpost" method="post" id='add_form')
                   label Title
                   input(type="text", name="title")#t
 
                   label Image
-                  div(class="flex four")
-                    div(class='three-fourth' style='height:50px')
-                        input(title="Drop image or click me" type="file" name= "image")#imagefile
+                  div(class="flex four center six-600")
+                    div(class='full two-third-600' style='height:50px')
+                        input(title="Drop image or click me" type="file" name= "image")
                     div
                         button(type='button' class='success',onclick='upload()') Upload
+                    div(class='wait' )
                   input(type="text", name="imagelink" placeholder='Alternatively Paste Image Link Directly')#i
                   label Description
                   textarea#description(name="description", rows="10", placeholder='Enter review')
@@ -69,6 +70,7 @@ block content
                         option 3
                         option 4
                         option 5
+                  input(hidden name='imgur' )
                   input(disabled='true',type='submit' value='Submit',id='post_submit',style='width:100%')
           div
             article(class ='card' style='margin:1px')

@@ -8,7 +8,6 @@ $(document).ready(function() {
         window.location.replace('/logout');
     });
 
-
     $('#description').easyEditor({
         css:({minHeight:'200px',maxHeight:'300px'
         }),
@@ -28,11 +27,11 @@ $(document).ready(function() {
     });
 
     $(document).ajaxStart(function(){
-        $(".wait").css("display", "block");
+        $(".wait").css("background-image", 'url("https://upload.wikimedia.org/wikipedia/en/1/13/Parabolic_dish_motion_circle.gif")');
     });
     
     $(document).ajaxComplete(function(){
-        $(".wait").css("display", "block");
+        $(".wait").css("background-image", "none");
     });
 
     populatePosts();
@@ -40,14 +39,18 @@ $(document).ready(function() {
 
 
 function upload(){
+    
+    if($('input[type="radio"]:checked').val() == '1')
+        var filesSelected = $('#add_form input[name="image"]')[0].files;
+    else if($('input[type="radio"]:checked').val() =='3')
+        var filesSelected = $('#edit_form input[name="image"]')[0].files;
 
-    var r = confirm('File will be uploaded onto Imgur');
+    if (filesSelected.length > 0){    
+            
+        var r = confirm('File will be uploaded onto Imgur');
 
-    if(r == true){
-        var filesSelected = document.getElementById("imagefile").files;
-
-        if (filesSelected.length > 0)
-        {
+        if(r == true){
+            
             var formData = new FormData();
             formData.append('image',filesSelected[0]);
 
@@ -64,6 +67,8 @@ function upload(){
             $.ajax(settings).done(function(response) {
                 console.log(response);
                 $('input[name="imagelink"]').val(response.data.link);
+                $('input[name="imgur"]').val(JSON.stringify(response));
+                console.log(JSON.parse($('input[name="imgur"]').val()));
             });
             
         }

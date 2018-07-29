@@ -13,21 +13,22 @@ router.get('/reviewlist', function(req, res, next) {
 });
 
 router.post('/addpost', function(req, res) {
- 
+
   if(req.isUnauthenticated()) res.redirect('/login')
   else{
-    var db= req.db;
+    var db = req.db;
     db.query("INSERT INTO reviews(userid,title,review,image,milk_stars,"+
-    "tea_stars,aftertaste_stars,overall_stars,date)"+
-    "values($1,$2,$3,$4,$5,$6,$7,$8,$9)",
+    "tea_stars,aftertaste_stars,overall_stars,date,datem,imgurjson)"+
+    "values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)",
     [req.user.id,req.body.title,req.body.description,req.body.imagelink,
-      req.body.ms,req.body.ts,req.body.as,req.body.os,moment().format("MMM Do YY")],function(err){
+      req.body.ms,req.body.ts,req.body.as,req.body.os,moment().format("MMM Do YY"),moment().format("MMM Do YY"),req.body.imgur],function(err){
       if(err) throw err;
 
       req.flash('info','Review Added');
       res.redirect('/');
     });
   }
+
   
 });
 
