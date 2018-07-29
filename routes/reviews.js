@@ -6,7 +6,7 @@ var moment = require('moment');
 router.get('/reviewlist', function(req, res, next) {
   var db = req.db;
   
-  db.query('SELECT * FROM reviews',(err,docs) => {
+  db.query('SELECT * FROM reviews ORDER BY num desc',(err,docs) => {
     if(err) throw err;
     res.json(docs.rows);
   });
