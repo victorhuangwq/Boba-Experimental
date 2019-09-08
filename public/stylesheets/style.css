@@ -8,6 +8,10 @@ nav {
   background-color:#C5ECFB;
 }
 
+.burger.pseudo.button{
+	color: black;
+}
+
 div ul {
   padding:0px;
   margin:0px;
